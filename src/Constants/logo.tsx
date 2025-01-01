@@ -1,5 +1,5 @@
 const logo = {
-    src: "logo.png",
+    src: "prohub.png",
 }
 
 export default logo;

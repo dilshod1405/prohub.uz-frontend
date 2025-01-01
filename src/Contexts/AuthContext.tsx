@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 interface AuthContextType {
   isAuthenticated: boolean;
   is_staff: boolean;
-  login: (access: string, is_staff: boolean) => void;
+  login: (access: string, is_staff: boolean, id: number) => void;
   logout: () => void;
   checkToken: () => boolean;
   checkStaff: () => boolean;
@@ -16,9 +16,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [is_staff, setIsStaff] = useState(false);
 
-  const login = (access: string, is_staff: boolean) => {
+  const login = (access: string, is_staff: boolean, id: number) => {
     localStorage.setItem('access', access);
     localStorage.setItem('is_staff', JSON.stringify(is_staff));
+    localStorage.setItem('id', JSON.stringify(id));
     setIsAuthenticated(true);
     setIsStaff(is_staff);
   };
@@ -62,8 +63,8 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
 
-  const login = (access: string, is_staff: boolean) => {
-    context.login(access, is_staff);
+  const login = (access: string, is_staff: boolean, id: number) => {
+    context.login(access, is_staff, id);
   };
 
   return {

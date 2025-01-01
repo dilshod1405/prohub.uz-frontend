@@ -1,0 +1,35 @@
+.header{
+
+    padding-top: 1%;
+
+    #navbar{
+        display: flex;
+
+        img{
+            width: 80px;
+            height: 80px;
+        }
+
+        .links{
+            margin: auto;
+
+            .link{
+                text-decoration: none;
+                color: #85A947;
+                font-size: 20px;
+                padding: 15px 25px;
+                font-weight: 600;
+            }
+        }
+
+        .linker{
+            text-decoration: none;
+            color: #2e2e2ec0; 
+            font-size: 20px;
+            padding: 15px 10px;
+            font-weight: 600;
+            margin: auto;
+        }
+        
+    }
+}

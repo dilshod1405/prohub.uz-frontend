@@ -5,6 +5,7 @@ import { AuthProvider } from '../Contexts/AuthContext'
 import PrivateRoute from '../Contexts/PrivateRoute'
 import ClientDashboard from './authentication/client/Dashboard/ClientDashboard'
 import AdminDashboard from './authentication/admin/Dashboard/AdminDashboard'
+import Home from './education/Home/Home'
 
 
 export default class Main extends Component {
@@ -13,6 +14,7 @@ export default class Main extends Component {
       <div>
         <AuthProvider>
             <Routes>
+              <Route path='/' element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/client-dashboard" element={<PrivateRoute client={<ClientDashboard />} />} />
               <Route path="/admin-dashboard" element={<PrivateRoute staff={<AdminDashboard />} />} />

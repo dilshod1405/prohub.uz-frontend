@@ -21,6 +21,7 @@ interface LoginResponse {
   access: string;
   data:{
     is_staff: boolean;
+    id: number;
   }
 }
 
@@ -47,17 +48,21 @@ const Login: React.FC = () => {
           username,
           password,
         });
+        
         const {is_staff} = response.data.data;
         const access = response.data.access;
+        const id = response.data.data.id;
         
-        login(access, is_staff);
+        login(access, is_staff, id);
         setLoader(false);
         if (rememberMe === true) {
           localStorage.setItem('access', access);
           localStorage.setItem('is_staff', JSON.stringify(is_staff));
+          localStorage.setItem('id', JSON.stringify(id));
         } else {
           sessionStorage.setItem('access', access);
           sessionStorage.setItem('is_staff', JSON.stringify(is_staff));
+          sessionStorage.setItem('id', JSON.stringify(id));
         }
         if (is_staff === true) {
           navigate('/admin-dashboard');
