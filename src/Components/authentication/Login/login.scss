@@ -44,10 +44,11 @@
                         margin-top: 40px;
                         width: 30%;
                         padding: 10px 20px;
-                        background: linear-gradient(135deg, #434343, #000000);
+                        // background: linear-gradient(135deg, #434343, #000000);
+                        background-color: #85A947;
                         transition: 0.4s ease;
                         font-size: 14px;
-                        color: #fff;
+                        color:  #000;
 
                         &:hover{
                             transform: scale(1.1);
@@ -112,17 +113,17 @@
                         display: block;
                         padding: 10px 20px;
                         font-size: 14px;
-                        border-radius: 15px;
+                        border-radius: 5px;
                         background-color: #ffffff00;  
                         color: #fff;
                         font-weight: 500;
-                        border: solid 1px #fff;
+                        border: solid 1px #85A947;
                         box-shadow: none;
     
                         &:hover{
-                            background-color: #fff;
+                            background-color: #85A947;
                             color: #000;
-                            border: solid 1px #fff;
+                            border: solid 1px #85A947;
                         }
                     }
                 }

@@ -8,7 +8,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TextField from '@mui/material/TextField';
-import links from '../../../Constants/links';
 import CircularProgress from '@mui/material/CircularProgress';
 import { initializeCSRF } from '../../../Contexts/csrf_utils';
 import API from '../../../Contexts/TokenRequest';
@@ -24,6 +23,22 @@ interface LoginResponse {
     id: number;
   }
 }
+
+const links = [
+  {
+    src: "https://t.me/architect_developer",
+    element: <TelegramIcon />
+  },
+
+  {
+    src: "https://github.com/dilshod1405",
+    element: <GitHubIcon />
+  },
+  {
+    src: "https://www.instagram.com/dil.shoddev",
+    element: <InstagramIcon />
+  }
+]
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -85,16 +100,18 @@ const Login: React.FC = () => {
                     <div className="content">
                       <h2>Shaxsiy kabinet</h2>
                       <div className="icons">
-                        <Link className='icon' to={links.instagram}><InstagramIcon /></Link>
-                        <Link className='icon' to={links.telegram}><TelegramIcon /></Link>
-                        <Link className='icon' to={links.github}><GitHubIcon /></Link>
+                        {links.map((link, index) => (
+                          <Link className='icon' to={link.src} target="_blank">
+                            {link.element}
+                          </Link>
+                        ))}
                       </div>
 
                       <Box onSubmit={handleLogin} component="form" sx={{ '& > :not(style)': { m: 2, width: '50ch', margin: 'auto', marginTop: '20px', display: 'flex', flexDirection: 'column' } }} noValidate autoComplete="off" >
                         <TextField onChange={(e) => setUsername(e.target.value)} id="filled-basic" label="username" variant="filled" color='primary'/>
                         <TextField id="filled-password-input" onChange={(e) => setPassword(e.target.value)} label="parol" type="password" autoComplete="current-password" variant="filled" />
                         <FormGroup>
-                          <FormControlLabel control={<Checkbox defaultChecked onChange={(e) => setRememberMe(e.target.checked)} style={{color: '#000'}}/>} label="Eslab qolish" />
+                          <FormControlLabel control={<Checkbox defaultChecked onChange={(e) => setRememberMe(e.target.checked)} style={{color: '#000'}}/>} label="Meni eslab qolish" />
                         </FormGroup>
                         {error && <p className='error'>{error}</p>}
                         <Button className='button' type="submit" variant="contained" color="primary" disableElevation>{loader ? <CircularProgress size={20} color="inherit"/> : 'Kirish'}</Button>
@@ -108,7 +125,7 @@ const Login: React.FC = () => {
                 </div>
                 <div className="right">
                   <div className="content">
-                    <h1 className='animate__animated animate__fadeIn'>PROHUB - XUSH KELIBSIZ</h1>
+                    <h1 className='animate__animated animate__fadeIn'>PROHUB - ILM YO'LIDA</h1>
                     <p>Ilmingiz ziyoda bo'lishi uchun harakatdamiz !</p>
                     <Link to="/register" className='link'><Button className='button'>Ro'yhatdan o'tish</Button></Link>
                   </div>
